@@ -1,0 +1,367 @@
+2026-01-22 10:38:35,337 :: 2919 [restartedMain] INFO  com.hrms.HrmsApplication - Starting HrmsApplication using Java 25.0.1 with PID 10376 (D:\jiffyhrms\hrms\target\classes started by HP in D:\jiffyhrms\hrms)
+2026-01-22 10:38:35,346 :: 2928 [restartedMain] DEBUG com.hrms.HrmsApplication - Running with Spring Boot v4.0.1, Spring v7.0.2
+2026-01-22 10:38:35,348 :: 2930 [restartedMain] INFO  com.hrms.HrmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-01-22 10:38:41,806 :: 9388 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-01-22 10:38:41,811 :: 9393 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-22 10:38:41,812 :: 9394 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-22 10:38:42,630 :: 10212 [restartedMain] DEBUG com.zaxxer.hikari.util.UtilityElf - Class com.mysql.cj.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@4beb048d
+2026-01-22 10:38:48,135 :: 15717 [restartedMain] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2026-01-22 10:38:52,352 :: 19934 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - HikariPool-1 - configuration:
+2026-01-22 10:38:52,358 :: 19940 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension.............false
+2026-01-22 10:38:52,358 :: 19940 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit......................true
+2026-01-22 10:38:52,359 :: 19941 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - catalog.........................none
+2026-01-22 10:38:52,359 :: 19941 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql...............none
+2026-01-22 10:38:52,360 :: 19942 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery.............none
+2026-01-22 10:38:52,364 :: 19946 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout...............30000
+2026-01-22 10:38:52,364 :: 19946 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - credentials.....................com.zaxxer.hikari.util.Credentials@1001dc1
+2026-01-22 10:38:52,365 :: 19947 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - credentialsProvider.............none
+2026-01-22 10:38:52,366 :: 19948 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - credentialsProviderClassName....none
+2026-01-22 10:38:52,366 :: 19948 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - dataSource......................none
+2026-01-22 10:38:52,366 :: 19948 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName.............none
+2026-01-22 10:38:52,366 :: 19948 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI..................none
+2026-01-22 10:38:52,379 :: 19961 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties............{password=<masked>}
+2026-01-22 10:38:52,379 :: 19961 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName................."com.mysql.cj.jdbc.Driver"
+2026-01-22 10:38:52,380 :: 19962 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverride...............none
+2026-01-22 10:38:52,380 :: 19962 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName......none
+2026-01-22 10:38:52,384 :: 19966 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties...........{}
+2026-01-22 10:38:52,384 :: 19966 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry.............none
+2026-01-22 10:38:52,384 :: 19966 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout.....................600000
+2026-01-22 10:38:52,384 :: 19966 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout.......1
+2026-01-22 10:38:52,385 :: 19967 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries..........false
+2026-01-22 10:38:52,385 :: 19967 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl.........................jdbc:mysql://localhost:3306/jiffyhrms?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+2026-01-22 10:38:52,386 :: 19968 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime...................120000
+2026-01-22 10:38:52,387 :: 19969 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold..........0
+2026-01-22 10:38:52,390 :: 19972 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime.....................1800000
+2026-01-22 10:38:52,391 :: 19973 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize.................10
+2026-01-22 10:38:52,391 :: 19973 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry..................none
+2026-01-22 10:38:52,391 :: 19973 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory...........none
+2026-01-22 10:38:52,391 :: 19973 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle.....................10
+2026-01-22 10:38:52,391 :: 19973 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - password........................<masked>
+2026-01-22 10:38:52,392 :: 19974 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - poolName........................"HikariPool-1"
+2026-01-22 10:38:52,392 :: 19974 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - readOnly........................false
+2026-01-22 10:38:52,392 :: 19974 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans..................false
+2026-01-22 10:38:52,392 :: 19974 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor...............none
+2026-01-22 10:38:52,393 :: 19975 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - schema..........................none
+2026-01-22 10:38:52,393 :: 19975 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory...................internal
+2026-01-22 10:38:52,393 :: 19975 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation............default
+2026-01-22 10:38:52,393 :: 19975 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - username........................"hrms_user"
+2026-01-22 10:38:52,394 :: 19976 [restartedMain] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout...............5000
+2026-01-22 10:38:52,394 :: 19976 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-22 10:38:52,450 :: 20032 [restartedMain] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (66f83e38-7102-48bb-84fd-f0fa3cde1d9c)
+2026-01-22 10:38:53,191 :: 20773 [restartedMain] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (66f83e38-7102-48bb-84fd-f0fa3cde1d9c)
+2026-01-22 10:38:53,193 :: 20775 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d29f691
+2026-01-22 10:38:53,198 :: 20780 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-22 10:38:53,343 :: 20925 [HikariPool-1:housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=1/10, idle=0/10, active=1, waiting=0)
+2026-01-22 10:38:53,440 :: 21022 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (7ecc4016-3ec3-44b5-8047-c5dd03c31e24)
+2026-01-22 10:38:53,448 :: 21030 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (7ecc4016-3ec3-44b5-8047-c5dd03c31e24)
+2026-01-22 10:38:53,448 :: 21030 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5ae8070d
+2026-01-22 10:38:53,480 :: 21062 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=2/10, idle=2/10, active=0, waiting=0)
+2026-01-22 10:38:53,481 :: 21063 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (93f6eaa8-a3d6-4d89-ad81-d77ff0c2890d)
+2026-01-22 10:38:53,490 :: 21072 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (93f6eaa8-a3d6-4d89-ad81-d77ff0c2890d)
+2026-01-22 10:38:53,491 :: 21073 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1bd50d36
+2026-01-22 10:38:53,522 :: 21104 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=3/10, idle=3/10, active=0, waiting=0)
+2026-01-22 10:38:53,523 :: 21105 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (a1d6358c-cbc5-411d-878d-c2c9f8f7a3d1)
+2026-01-22 10:38:53,531 :: 21113 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (a1d6358c-cbc5-411d-878d-c2c9f8f7a3d1)
+2026-01-22 10:38:53,531 :: 21113 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a0434ec
+2026-01-22 10:38:53,562 :: 21144 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=4/10, idle=4/10, active=0, waiting=0)
+2026-01-22 10:38:53,562 :: 21144 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (b1d507cd-cbb1-417e-9743-392c1f90ac63)
+2026-01-22 10:38:53,571 :: 21153 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (b1d507cd-cbb1-417e-9743-392c1f90ac63)
+2026-01-22 10:38:53,572 :: 21154 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7bfaf279
+2026-01-22 10:38:53,604 :: 21186 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=5/10, idle=5/10, active=0, waiting=0)
+2026-01-22 10:38:53,604 :: 21186 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (298d2168-3527-4f8f-b4b0-e00fc494e61f)
+2026-01-22 10:38:53,613 :: 21195 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (298d2168-3527-4f8f-b4b0-e00fc494e61f)
+2026-01-22 10:38:53,613 :: 21195 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34341a6f
+2026-01-22 10:38:53,645 :: 21227 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=6/10, idle=6/10, active=0, waiting=0)
+2026-01-22 10:38:53,646 :: 21228 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (a63e2346-69f8-496d-b91a-b06c929ecd12)
+2026-01-22 10:38:53,657 :: 21239 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (a63e2346-69f8-496d-b91a-b06c929ecd12)
+2026-01-22 10:38:53,657 :: 21239 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7fb4ed22
+2026-01-22 10:38:53,688 :: 21270 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=7/10, idle=7/10, active=0, waiting=0)
+2026-01-22 10:38:53,691 :: 21273 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (97e15da2-267c-47c7-b1ec-f4ec5d957fa9)
+2026-01-22 10:38:53,697 :: 21279 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (97e15da2-267c-47c7-b1ec-f4ec5d957fa9)
+2026-01-22 10:38:53,698 :: 21280 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3352f4d3
+2026-01-22 10:38:53,729 :: 21311 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=8/10, idle=8/10, active=0, waiting=0)
+2026-01-22 10:38:53,729 :: 21311 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (4e6da94b-65ed-435e-9c61-601a09cfdce0)
+2026-01-22 10:38:53,739 :: 21321 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (4e6da94b-65ed-435e-9c61-601a09cfdce0)
+2026-01-22 10:38:53,740 :: 21322 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35d8d20e
+2026-01-22 10:38:53,772 :: 21354 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=9/10, idle=9/10, active=0, waiting=0)
+2026-01-22 10:38:53,772 :: 21354 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Attempting to create/setup new connection (2e46ce31-8908-454f-bdd3-9fc2a1d0cd7d)
+2026-01-22 10:38:53,834 :: 21416 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Established new connection (2e46ce31-8908-454f-bdd3-9fc2a1d0cd7d)
+2026-01-22 10:38:53,834 :: 21416 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d2ce22a
+2026-01-22 10:38:53,865 :: 21447 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=10/10, idle=10/10, active=0, waiting=0)
+2026-01-22 10:39:01,426 :: 29008 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.AttendanceController:
+	{GET [/api/attendance/status/{empId}]}: getStatus(Integer)
+	{POST [/api/attendance/check-in]}: checkIn(Integer,String)
+	{POST [/api/attendance/check-out]}: checkOut(Integer,String)
+	{GET [/api/attendance/logs/{empId}]}: getLogs(Integer)
+	{GET [/api/attendance/report/daily]}: getDailyReport(Integer,int,int)
+	{GET [/api/attendance/report/monthly]}: getMonthlyReport(Integer,int)
+2026-01-22 10:39:01,445 :: 29027 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.AuthController:
+	{POST [/api/auth/login]}: login(LoginRequest)
+2026-01-22 10:39:01,451 :: 29033 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.CompanyController:
+	{GET [/api/companies]}: getAllCompanies()
+2026-01-22 10:39:01,467 :: 29049 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.DetailsController:
+	{GET [/api/master/departments]}: getDepartments(Long)
+	{GET [/api/master/designations]}: getDesignations(Long)
+2026-01-22 10:39:01,472 :: 29054 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.EmployeeController:
+	{GET [/api/employees]}: listEmployees(Long,Long,Long)
+	{POST [/api/employees]}: addEmployee(Map)
+	{POST [/api/employees/delete/{id}]}: deleteEmployee(Integer)
+	{POST [/api/employees/update/{id}]}: updateEmployee(Integer,Map)
+	{GET [/api/employees/{id}]}: getEmployee(Integer)
+2026-01-22 10:39:01,484 :: 29066 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.LeaveController:
+	{GET [/api/leaves/history/{empId}]}: getHistory(Long)
+	{POST [/api/leaves/apply]}: applyForLeave(LeaveRequestDTO)
+	{POST [/api/leaves/process/{requestId}]}: processLeave(Long,Map)
+	{GET [/api/leaves/balance/{empId}]}: getBalances(Long)
+	{GET [/api/leaves/pending]}: getPendingRequests()
+2026-01-22 10:39:01,488 :: 29070 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.MenuController:
+	{GET [/api/menus/{roleId}]}: getUserMenus(Long)
+2026-01-22 10:39:01,493 :: 29075 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	c.h.c.SalaryController:
+	{GET [/api/salary/download]}: downloadSalarySlip(Integer,String,int)
+2026-01-22 10:39:01,504 :: 29086 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	o.s.b.w.a.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2026-01-22 10:39:01,566 :: 29148 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+2026-01-22 10:39:01,594 :: 29176 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2026-01-22 10:39:01,600 :: 29182 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2026-01-22 10:39:01,635 :: 29217 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
+2026-01-22 10:39:01,770 :: 29352 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]], /swagger-ui*/*swagger-initializer.js=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /swagger-ui*/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]}
+2026-01-22 10:39:03,125 :: 30707 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-01-22 10:39:03,187 :: 30769 [restartedMain] INFO  com.hrms.HrmsApplication - Started HrmsApplication in 29.926 seconds (process running for 32.122)
+2026-01-22 10:39:23,425 :: 51007 [HikariPool-1:housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10/10, idle=10/10, active=0, waiting=0)
+2026-01-22 10:39:23,425 :: 51007 [HikariPool-1:housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled.
+2026-01-22 10:39:33,655 :: 61237 [http-nio-8080-exec-1] INFO  o.a.tomcat.util.http.parser.Cookie - A cookie header was received [g_state={"i_l":0};] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2026-01-22 10:39:33,667 :: 61249 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-22 10:39:39,989 :: 67571 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:40,007 :: 67589 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.Map<java.lang.String, java.lang.String>
+2026-01-22 10:39:40,017 :: 67599 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:40,075 :: 67657 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.Object>
+2026-01-22 10:39:40,076 :: 67658 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:40,096 :: 67678 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class com.hrms.dto.LeaveRequestDTO
+2026-01-22 10:39:40,141 :: 67723 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:40,596 :: 68178 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:40,672 :: 68254 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:40,703 :: 68285 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.Object>
+2026-01-22 10:39:40,703 :: 68285 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:40,753 :: 68335 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.Map<java.lang.String, java.lang.Object>
+2026-01-22 10:39:40,755 :: 68337 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:40,782 :: 68364 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.Object>
+2026-01-22 10:39:40,785 :: 68367 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:40,799 :: 68381 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:40,801 :: 68383 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.Map<java.lang.String, java.lang.Object>
+2026-01-22 10:39:40,803 :: 68385 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:40,806 :: 68388 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.Object>
+2026-01-22 10:39:40,806 :: 68388 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:40,808 :: 68390 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:40,815 :: 68397 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.String>
+2026-01-22 10:39:40,815 :: 68397 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:40,820 :: 68402 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class com.hrms.dto.LoginRequest
+2026-01-22 10:39:40,822 :: 68404 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:40,832 :: 68414 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<com.hrms.dto.AuthResponse>
+2026-01-22 10:39:40,856 :: 68438 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.dto.AuthResponse]
+2026-01-22 10:39:40,887 :: 68469 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:40,903 :: 68485 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:40,965 :: 68547 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:40,967 :: 68549 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.String
+2026-01-22 10:39:40,972 :: 68554 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.String>
+2026-01-22 10:39:40,979 :: 68561 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,004 :: 68586 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:41,005 :: 68587 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.String
+2026-01-22 10:39:41,040 :: 68622 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.String>
+2026-01-22 10:39:41,041 :: 68623 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,054 :: 68636 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:41,055 :: 68637 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.String
+2026-01-22 10:39:41,057 :: 68639 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve int
+2026-01-22 10:39:41,064 :: 68646 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<byte[]>
+2026-01-22 10:39:41,065 :: 68647 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [array type, component type: [simple type, class byte]]
+2026-01-22 10:39:41,065 :: 68647 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class byte]
+2026-01-22 10:39:41,068 :: 68650 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:41,070 :: 68652 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<com.hrms.entity.Menu>>
+2026-01-22 10:39:41,070 :: 68652 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [simple type, class com.hrms.entity.Menu]]
+2026-01-22 10:39:41,072 :: 68654 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Menu]
+2026-01-22 10:39:41,081 :: 68663 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:41,083 :: 68665 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,085 :: 68667 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,087 :: 68669 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:41,120 :: 68702 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:41,123 :: 68705 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,130 :: 68712 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:41,133 :: 68715 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:41,137 :: 68719 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:41,241 :: 68823 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:41,248 :: 68830 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:41,251 :: 68833 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:41,253 :: 68835 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.List<com.hrms.entity.Designation>
+2026-01-22 10:39:41,254 :: 68836 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Designation]
+2026-01-22 10:39:41,270 :: 68852 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:41,271 :: 68853 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,275 :: 68857 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Department]
+2026-01-22 10:39:41,283 :: 68865 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:41,285 :: 68867 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:41,287 :: 68869 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:41,289 :: 68871 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Company]
+2026-01-22 10:39:41,305 :: 68887 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:42,543 :: 70125 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:42,969 :: 70551 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:42,977 :: 70559 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:42,986 :: 70568 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,866 :: 71448 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:43,868 :: 71450 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.List<com.hrms.entity.Department>
+2026-01-22 10:39:43,869 :: 71451 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Department]
+2026-01-22 10:39:43,870 :: 71452 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:43,871 :: 71453 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,875 :: 71457 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:43,878 :: 71460 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Company]
+2026-01-22 10:39:43,880 :: 71462 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:43,882 :: 71464 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,884 :: 71466 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:43,885 :: 71467 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,887 :: 71469 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,895 :: 71477 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<com.hrms.entity.LeaveRequest>>
+2026-01-22 10:39:43,896 :: 71478 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [simple type, class com.hrms.entity.LeaveRequest]]
+2026-01-22 10:39:43,896 :: 71478 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.LeaveRequest]
+2026-01-22 10:39:43,928 :: 71510 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:43,930 :: 71512 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Employee]
+2026-01-22 10:39:43,932 :: 71514 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:43,934 :: 71516 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,935 :: 71517 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Department]
+2026-01-22 10:39:43,936 :: 71518 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:43,937 :: 71519 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,942 :: 71524 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:43,945 :: 71527 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Company]
+2026-01-22 10:39:43,946 :: 71528 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:43,948 :: 71530 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,950 :: 71532 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:43,952 :: 71534 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,953 :: 71535 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,961 :: 71543 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Designation]
+2026-01-22 10:39:43,962 :: 71544 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:43,964 :: 71546 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,975 :: 71557 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,986 :: 71568 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:43,994 :: 71576 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:43,997 :: 71579 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.LeaveType]
+2026-01-22 10:39:43,998 :: 71580 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,004 :: 71586 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,005 :: 71587 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,007 :: 71589 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,010 :: 71592 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,015 :: 71597 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,016 :: 71598 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,018 :: 71600 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Double]
+2026-01-22 10:39:44,065 :: 71647 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,066 :: 71648 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,068 :: 71650 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,070 :: 71652 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:44,080 :: 71662 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:44,082 :: 71664 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<com.hrms.entity.LeaveRequest>>
+2026-01-22 10:39:44,083 :: 71665 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [simple type, class com.hrms.entity.LeaveRequest]]
+2026-01-22 10:39:44,083 :: 71665 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.LeaveRequest]
+2026-01-22 10:39:44,084 :: 71666 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,086 :: 71668 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Employee]
+2026-01-22 10:39:44,094 :: 71676 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,096 :: 71678 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,098 :: 71680 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Department]
+2026-01-22 10:39:44,100 :: 71682 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:44,102 :: 71684 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,104 :: 71686 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,110 :: 71692 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Company]
+2026-01-22 10:39:44,112 :: 71694 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,114 :: 71696 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,116 :: 71698 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:44,117 :: 71699 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,119 :: 71701 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,121 :: 71703 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Designation]
+2026-01-22 10:39:44,130 :: 71712 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:44,132 :: 71714 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,138 :: 71720 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,141 :: 71723 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,147 :: 71729 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,154 :: 71736 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.LeaveType]
+2026-01-22 10:39:44,155 :: 71737 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,163 :: 71745 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,164 :: 71746 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,165 :: 71747 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,168 :: 71750 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,170 :: 71752 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,171 :: 71753 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,179 :: 71761 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Double]
+2026-01-22 10:39:44,180 :: 71762 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,181 :: 71763 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,185 :: 71767 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,212 :: 71794 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:44,217 :: 71799 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:44,220 :: 71802 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<com.hrms.dto.LeaveBalanceDTO>>
+2026-01-22 10:39:44,220 :: 71802 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [simple type, class com.hrms.dto.LeaveBalanceDTO]]
+2026-01-22 10:39:44,221 :: 71803 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.dto.LeaveBalanceDTO]
+2026-01-22 10:39:44,222 :: 71804 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,226 :: 71808 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,230 :: 71812 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Double]
+2026-01-22 10:39:44,236 :: 71818 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:44,237 :: 71819 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:44,245 :: 71827 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Long
+2026-01-22 10:39:44,250 :: 71832 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.List<com.hrms.dto.EmployeeDTO>
+2026-01-22 10:39:44,250 :: 71832 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.dto.EmployeeDTO]
+2026-01-22 10:39:44,253 :: 71835 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,255 :: 71837 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,263 :: 71845 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,265 :: 71847 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:44,275 :: 71857 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:44,278 :: 71860 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>>
+2026-01-22 10:39:44,278 :: 71860 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [map type; class java.util.Map, [simple type, class java.lang.String] -> [simple type, class java.lang.Object]]
+2026-01-22 10:39:44,278 :: 71860 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:44,281 :: 71863 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve java.util.List<com.hrms.entity.Company>
+2026-01-22 10:39:44,281 :: 71863 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.entity.Company]
+2026-01-22 10:39:44,282 :: 71864 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,285 :: 71867 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,287 :: 71869 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Integer]
+2026-01-22 10:39:44,292 :: 71874 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:44,295 :: 71877 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,297 :: 71879 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,350 :: 71932 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:44,354 :: 71936 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.lang.String>
+2026-01-22 10:39:44,355 :: 71937 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,402 :: 71984 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:44,405 :: 71987 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve int
+2026-01-22 10:39:44,412 :: 71994 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<java.util.Map<java.lang.String, java.lang.Object>>>
+2026-01-22 10:39:44,412 :: 71994 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [map type; class java.util.Map, [simple type, class java.lang.String] -> [simple type, class java.lang.Object]]]
+2026-01-22 10:39:44,412 :: 71994 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [map type; class java.util.Map, [simple type, class java.lang.String] -> [simple type, class java.lang.Object]]
+2026-01-22 10:39:44,412 :: 71994 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Object]
+2026-01-22 10:39:44,416 :: 71998 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:44,417 :: 71999 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve int
+2026-01-22 10:39:44,417 :: 71999 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve int
+2026-01-22 10:39:44,425 :: 72007 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<com.hrms.dto.EntryExitCdrDTO>>
+2026-01-22 10:39:44,425 :: 72007 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [simple type, class com.hrms.dto.EntryExitCdrDTO]]
+2026-01-22 10:39:44,427 :: 72009 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.dto.EntryExitCdrDTO]
+2026-01-22 10:39:44,429 :: 72011 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:44,430 :: 72012 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,431 :: 72013 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:44,433 :: 72015 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,443 :: 72025 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve class java.lang.Integer
+2026-01-22 10:39:44,446 :: 72028 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve org.springframework.http.ResponseEntity<java.util.List<com.hrms.dto.EntryExitCdrDTO>>
+2026-01-22 10:39:44,446 :: 72028 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [collection type; class java.util.List, contains [simple type, class com.hrms.dto.EntryExitCdrDTO]]
+2026-01-22 10:39:44,447 :: 72029 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class com.hrms.dto.EntryExitCdrDTO]
+2026-01-22 10:39:44,447 :: 72029 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.Long]
+2026-01-22 10:39:44,449 :: 72031 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDate]
+2026-01-22 10:39:44,454 :: 72036 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.time.LocalDateTime]
+2026-01-22 10:39:44,463 :: 72045 [http-nio-8080-exec-9] DEBUG i.s.v.c.c.ModelConverterContextImpl - resolve [simple type, class java.lang.String]
+2026-01-22 10:39:44,550 :: 72132 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 6612 ms
+2026-01-22 10:39:53,426 :: 81008 [HikariPool-1:housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10/10, idle=10/10, active=0, waiting=0)
+2026-01-22 10:39:53,426 :: 81008 [HikariPool-1:housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Fill pool skipped, pool has sufficient level or currently being filled.
