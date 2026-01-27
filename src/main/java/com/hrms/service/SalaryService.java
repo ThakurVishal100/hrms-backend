@@ -42,7 +42,7 @@ public class SalaryService {
     private static final Color LABEL_BG_COLOR = new Color(225, 225, 225); // Light Gray
     private static final Color BORDER_COLOR = Color.GRAY;
 
-    public byte[] generateSalarySlip(Integer empId, String month, int year) {
+    public byte[] generateSalarySlip(Integer targetEmpId, String month, int year, String loggedInLoginId) {
 
 
         if (month == null || month.trim().isEmpty()) {
@@ -53,7 +53,7 @@ public class SalaryService {
         try {
             selectedMonth = Month.valueOf(month.toUpperCase());
         } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid month provided");
+            throw new IllegalArgumentException("Invalid month provided"+ month);
         }
 
         YearMonth selectedYearMonth = YearMonth.of(year, selectedMonth);
@@ -62,18 +62,45 @@ public class SalaryService {
         //  Future / current month restriction
         if (!selectedYearMonth.isBefore(currentYearMonth)) {
             throw new IllegalArgumentException(
-                    "Salary slip for current or future month is not generated yet"
+                    "Salary slip for current or future month is not generated yet. Please wait until the month ends."
             );
         }
 
+        Employee targetEmployee = employeeRepository.findById(targetEmpId)
+                .orElseThrow(() -> new RuntimeException("Target Employee not found"));
 
-        Employee employee = employeeRepository.findById(empId)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        Employee requester = employeeRepository.findByLoginId(loggedInLoginId)
+                .orElseThrow(() -> new RuntimeException("Logged-in user not found"));
 
-        EmployeeSalary salary = salaryRepository.findByEmployee_EmployeeIdAndStatus(empId, 1)
-                .orElseThrow(() -> new RuntimeException("Salary details not found"));
+        Integer reqRole = requester.getRole().getRoleId();
+        Integer reqId = requester.getEmployeeId();
+        Integer targetId = targetEmployee.getEmployeeId();
 
-        EmployeeBankDetails bank = bankRepository.findByEmployee_EmployeeId(empId)
+        // ACCESS CONTROL LOGIC
+        if (reqId.equals(targetId)) {
+            // Case A: Self-Download -> ALLOWED
+        } else if (reqRole == 1) {
+            // Case B: Super Admin -> ALLOWED (Global Access)
+        } else if (reqRole == 2) {
+            // Case C: HR Manager -> RESTRICTED (Same Company Only)
+            Integer reqCompanyId = requester.getCompany().getCompanyId();
+            Integer targetCompanyId = targetEmployee.getCompany().getCompanyId();
+            if (!reqCompanyId.equals(targetCompanyId)) {
+                throw new RuntimeException("ACCESS DENIED: You cannot access employees of another company.");
+            }
+        } else {
+            // Case D: Regular Employee trying to download others -> DENIED
+            throw new RuntimeException("ACCESS DENIED: You do not have permission.");
+        }
+
+
+//        Employee employee = employeeRepository.findById(empId)
+//                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        EmployeeSalary salary = salaryRepository.findByEmployee_EmployeeIdAndStatus(targetEmpId, 1)
+                .orElseThrow(() -> new RuntimeException("Salary details not found for this employee"));
+
+        EmployeeBankDetails bank = bankRepository.findByEmployee_EmployeeId(targetEmpId)
                 .orElseThrow(()-> new RuntimeException("Employee Bank Details not found"));
 
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
@@ -95,7 +122,7 @@ public class SalaryService {
             Font valueFont = FontFactory.getFont(FontFactory.HELVETICA, 9);
 
             // 1. COMPANY HEADER (Top Right)
-            Paragraph companyName = new Paragraph(employee.getCompany().getCompanyName(), companyFont);
+            Paragraph companyName = new Paragraph(targetEmployee.getCompany().getCompanyName(), companyFont);
             companyName.setAlignment(Element.ALIGN_RIGHT);
             document.add(companyName);
 
@@ -122,19 +149,19 @@ public class SalaryService {
 
             // Row 1
             addLabelCell(empTable, "Name", labelFont);
-            addValueCell(empTable, employee.getEmployeeName(), valueFont);
+            addValueCell(empTable, targetEmployee.getEmployeeName(), valueFont);
             addLabelCell(empTable, "PAN", labelFont);
             addValueCell(empTable, bank.getPanNumber() != null ? bank.getPanNumber() : "NA", valueFont);
 
             // Row 2
             addLabelCell(empTable, "Employee Code", labelFont);
-            addValueCell(empTable, "EMP" + employee.getEmployeeId(), valueFont);
+            addValueCell(empTable, "EMP" + targetEmployee.getEmployeeId(), valueFont);
             addLabelCell(empTable, "Gender", labelFont);
             addValueCell(empTable, "Male", valueFont);
 
             // Row 3
             addLabelCell(empTable, "Department", labelFont);
-            addValueCell(empTable, employee.getDepartment() != null ? employee.getDepartment().getDeptName() : "-", valueFont);
+            addValueCell(empTable, targetEmployee.getDepartment() != null ? targetEmployee.getDepartment().getDeptName() : "-", valueFont);
             addLabelCell(empTable, "Bank Name", labelFont);
             addValueCell(empTable, bank.getBankName() != null ? bank.getBankName() : "NA", valueFont);
 
@@ -146,7 +173,7 @@ public class SalaryService {
 
             // Row 5
             addLabelCell(empTable, "Designation", labelFont);
-            addValueCell(empTable, employee.getDesignation() != null ? employee.getDesignation().getDesignationName() : "-", valueFont);
+            addValueCell(empTable, targetEmployee.getDesignation() != null ? targetEmployee.getDesignation().getDesignationName() : "-", valueFont);
             addLabelCell(empTable, "Account Number", labelFont);
             addValueCell(empTable, bank.getAccountNumber() != null ? bank.getAccountNumber() : "NA", valueFont); // Bold this if needed
 
@@ -158,13 +185,13 @@ public class SalaryService {
 
             // Row 7
             addLabelCell(empTable, "Joining Date", labelFont);
-            addValueCell(empTable, String.valueOf(employee.getJoiningDate()), valueFont);
+            addValueCell(empTable, String.valueOf(targetEmployee.getJoiningDate()), valueFont);
             addLabelCell(empTable, "PF UAN", labelFont);
             addValueCell(empTable, bank.getUanNumber() != null ? bank.getUanNumber() : "NA", valueFont);
 
             // Row 8
             addLabelCell(empTable, "Leaving Date", labelFont);
-            addValueCell(empTable, employee.getRelievingDate() != null ? String.valueOf(employee.getRelievingDate()) : "", valueFont);
+            addValueCell(empTable, targetEmployee.getRelievingDate() != null ? String.valueOf(targetEmployee.getRelievingDate()) : "", valueFont);
             addLabelCell(empTable, "ESI Number", labelFont);
             addValueCell(empTable, bank.getEsiNumber() != null ? bank.getEsiNumber() : "NA", valueFont);
 
@@ -187,7 +214,7 @@ public class SalaryService {
 
             PdfPTable daysValues = new PdfPTable(3);
             daysValues.setWidthPercentage(100);
-            addCenteredCell(daysValues, "30.00", valueFont);  //   will make it dynamic later  
+            addCenteredCell(daysValues, "30.00", valueFont);  //   will make it dynamic later
             addCenteredCell(daysValues, "0.00", valueFont);
             addCenteredCell(daysValues, "0.00", valueFont);
             document.add(daysValues);

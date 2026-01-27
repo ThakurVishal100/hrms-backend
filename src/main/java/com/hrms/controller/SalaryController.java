@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/api/salary")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -19,10 +21,15 @@ public class SalaryController {
     public ResponseEntity<byte[]> downloadSalarySlip(
             @RequestParam Integer empId,
             @RequestParam String month,
-            @RequestParam int year) {
+            @RequestParam int year,
+            Principal principal) {
+
+        if (principal == null) {
+            throw new RuntimeException("Unauthorized: Please log in.");
+        }
 
 //        byte[] is a raw binary representation of data used to store or transfer files like PDFs, images, and videos in memory.
-        byte[] pdfBytes = salaryService.generateSalarySlip(empId, month, year);
+        byte[] pdfBytes = salaryService.generateSalarySlip(empId, month, year,principal.getName());
 
         //  CONTENT_DISPOSITION  :- browser ko batata hai pdf ko download krna h display nhi
         //  attachment  :-  auto download trigger hota hai

@@ -22,6 +22,13 @@ public class Employee {
     @Column(name = "employee_name")
     private String employeeName;
 
+    @Column(name = "login_id", unique = true)
+    private String loginId;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     @ManyToOne
     @JoinColumn(name = "dept_id")
     private Department department;

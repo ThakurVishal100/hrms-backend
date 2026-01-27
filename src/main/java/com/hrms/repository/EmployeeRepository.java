@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
@@ -18,5 +19,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     @Query(value="select * from tb_employee_record where company_id =:companyId", nativeQuery = true)
     List<Employee> findByCompanyId(Long companyId);
+
+    Optional<Employee> findByLoginId(String loginId);
 }
 

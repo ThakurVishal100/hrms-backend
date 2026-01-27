@@ -23,6 +23,9 @@ public class User {
 
     private String password;
 
+    @Column(name = "auth_token",length = 2000)
+    private String authToken;
+
     @OneToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
