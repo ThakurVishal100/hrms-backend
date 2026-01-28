@@ -3,10 +3,11 @@ package com.hrms.service;
 import com.hrms.entity.Employee;
 import com.hrms.entity.EmployeeBankDetails;
 import com.hrms.entity.EmployeeSalary;
+import com.hrms.entity.User; // Imported User
 import com.hrms.repository.EmployeeBankDetailsRepository;
 import com.hrms.repository.EmployeeRepository;
 import com.hrms.repository.EmployeeSalaryRepository;
-
+import com.hrms.repository.UserRepository; // Imported UserRepository
 
 import org.openpdf.text.*;
 import org.openpdf.text.pdf.PdfPCell;
@@ -18,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
-
 import java.time.Month;
 import java.time.YearMonth;
 import java.time.ZoneId;
@@ -36,6 +36,9 @@ public class SalaryService {
     @Autowired
     private EmployeeBankDetailsRepository bankRepository;
 
+    // ADDED: To fetch the logged-in user correctly
+    @Autowired
+    private UserRepository userRepository;
 
     private static final Color HEADER_BG_COLOR = Color.BLACK;
     private static final Color HEADER_TEXT_COLOR = Color.WHITE;
@@ -44,12 +47,11 @@ public class SalaryService {
 
     public byte[] generateSalarySlip(Integer targetEmpId, String month, int year, String loggedInLoginId) {
 
-
         if (month == null || month.trim().isEmpty()) {
             throw new IllegalArgumentException("Month cannot be empty");
         }
 
-        Month selectedMonth;   //   Month is a enum in java.time api
+        Month selectedMonth;
         try {
             selectedMonth = Month.valueOf(month.toUpperCase());
         } catch (Exception e) {
@@ -66,25 +68,32 @@ public class SalaryService {
             );
         }
 
+        // 1. Fetch Target Employee
         Employee targetEmployee = employeeRepository.findById(targetEmpId)
                 .orElseThrow(() -> new RuntimeException("Target Employee not found"));
 
-        Employee requester = employeeRepository.findByLoginId(loggedInLoginId)
+        // 2. Fetch Requester from USER Table (FIXED)
+        User requesterUser = userRepository.findByLoginId(loggedInLoginId)
                 .orElseThrow(() -> new RuntimeException("Logged-in user not found"));
 
-        Integer reqRole = requester.getRole().getRoleId();
-        Integer reqId = requester.getEmployeeId();
+        // Extract details from User entity safely
+        Integer reqRole = requesterUser.getRole().getRoleId();
+
+        // Handle cases where User might not be linked to Employee or Company (e.g. Super Admin)
+        Integer reqEmpId = (requesterUser.getEmployee() != null) ? requesterUser.getEmployee().getEmployeeId() : -1;
+        Integer reqCompanyId = (requesterUser.getCompany() != null) ? requesterUser.getCompany().getCompanyId() : -1;
+
         Integer targetId = targetEmployee.getEmployeeId();
 
-        // ACCESS CONTROL LOGIC
-        if (reqId.equals(targetId)) {
+        // ACCESS CONTROL LOGIC (Preserved)
+        if (reqEmpId.equals(targetId)) {
             // Case A: Self-Download -> ALLOWED
         } else if (reqRole == 1) {
             // Case B: Super Admin -> ALLOWED (Global Access)
         } else if (reqRole == 2) {
             // Case C: HR Manager -> RESTRICTED (Same Company Only)
-            Integer reqCompanyId = requester.getCompany().getCompanyId();
             Integer targetCompanyId = targetEmployee.getCompany().getCompanyId();
+
             if (!reqCompanyId.equals(targetCompanyId)) {
                 throw new RuntimeException("ACCESS DENIED: You cannot access employees of another company.");
             }
@@ -93,10 +102,7 @@ public class SalaryService {
             throw new RuntimeException("ACCESS DENIED: You do not have permission.");
         }
 
-
-//        Employee employee = employeeRepository.findById(empId)
-//                .orElseThrow(() -> new RuntimeException("Employee not found"));
-
+        // Fetch Salary Data
         EmployeeSalary salary = salaryRepository.findByEmployee_EmployeeIdAndStatus(targetEmpId, 1)
                 .orElseThrow(() -> new RuntimeException("Salary details not found for this employee"));
 
@@ -104,15 +110,9 @@ public class SalaryService {
                 .orElseThrow(()-> new RuntimeException("Employee Bank Details not found"));
 
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
-            //  ByteArrayOutputStream out = new ByteArrayOutputStream();   (
-            //  memory ke andar ek output stream bana rahe hain
-              //   PDF file ko direct disk par save nahi kar rahe, balki bytes ke form mein RAM (memory) mein rakh rahe hain.
-            //  )
             Document document = new Document(PageSize.A4, 20, 20, 20, 20); // Small margins
             PdfWriter.getInstance(document, out);
-            //  document → Kya likhna hai
-//            out → Kahan likhna hai (memory stream)
-            document.open();  //  this lines open a pdf to be able to write content on the pdf
+            document.open();
 
             //  FONTS
             Font companyFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
@@ -175,7 +175,7 @@ public class SalaryService {
             addLabelCell(empTable, "Designation", labelFont);
             addValueCell(empTable, targetEmployee.getDesignation() != null ? targetEmployee.getDesignation().getDesignationName() : "-", valueFont);
             addLabelCell(empTable, "Account Number", labelFont);
-            addValueCell(empTable, bank.getAccountNumber() != null ? bank.getAccountNumber() : "NA", valueFont); // Bold this if needed
+            addValueCell(empTable, bank.getAccountNumber() != null ? bank.getAccountNumber() : "NA", valueFont);
 
             // Row 6
             addLabelCell(empTable, "Location", labelFont);
@@ -214,7 +214,7 @@ public class SalaryService {
 
             PdfPTable daysValues = new PdfPTable(3);
             daysValues.setWidthPercentage(100);
-            addCenteredCell(daysValues, "30.00", valueFont);  //   will make it dynamic later
+            addCenteredCell(daysValues, "30.00", valueFont);
             addCenteredCell(daysValues, "0.00", valueFont);
             addCenteredCell(daysValues, "0.00", valueFont);
             document.add(daysValues);
@@ -260,7 +260,6 @@ public class SalaryService {
                     addContentCell(earningsTable, formatVal(val), valueFont); // Total
                 }
             }
-            // Add fixed rows if list is short to match height? Optional.
             // Total Row
             addGrayHeader(earningsTable, "TOTAL EARNINGS", labelFont);
             addContentCell(earningsTable, formatVal(totalEarnings), FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9));
@@ -325,11 +324,6 @@ public class SalaryService {
             addLabelCell(netTable, "NET PAY IN WORDS", labelFont);
             addValueCell(netTable, convertToWords(netPay.longValue()), valueFont);
             document.add(netTable);
-
-//             Footer / Disclaimer
-//             Paragraph footer = new Paragraph("\nThis is a computer generated slip.", smallFont);
-//             footer.setAlignment(Element.ALIGN_CENTER);
-//             document.add(footer);
 
             document.close();
             return out.toByteArray();
