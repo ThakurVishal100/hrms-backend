@@ -41,7 +41,6 @@ public class HrmsApplication {
 	@Bean
 	public ObjectMapper objectMapper() {
 		ObjectMapper mapper = new ObjectMapper();
-		// Register JavaTimeModule to handle LocalDate/LocalDateTime automatically
 		mapper.registerModule(new JavaTimeModule());
 		return mapper;
 	}

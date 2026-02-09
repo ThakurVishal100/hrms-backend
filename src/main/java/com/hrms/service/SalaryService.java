@@ -48,66 +48,73 @@ public class SalaryService {
     public byte[] generateSalarySlip(Integer targetEmpId, String month, int year, String loggedInLoginId) {
 
         if (month == null || month.trim().isEmpty()) {
-            throw new IllegalArgumentException("Month cannot be empty");
+            throw new RuntimeException("Validation Error: Month cannot be empty");
         }
 
         Month selectedMonth;
         try {
             selectedMonth = Month.valueOf(month.toUpperCase());
         } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid month provided"+ month);
+            throw new RuntimeException("Validation Error: Invalid month name: " + month);
         }
 
         YearMonth selectedYearMonth = YearMonth.of(year, selectedMonth);
         YearMonth currentYearMonth = YearMonth.now(ZoneId.of("Asia/Kolkata"));
 
-        //  Future / current month restriction
         if (!selectedYearMonth.isBefore(currentYearMonth)) {
-            throw new IllegalArgumentException(
-                    "Salary slip for current or future month is not generated yet. Please wait until the month ends."
-            );
+            throw new RuntimeException("Notice: Salary slips are generated after the month ends.");
         }
 
-        // 1. Fetch Target Employee
-        Employee targetEmployee = employeeRepository.findById(targetEmpId)
-                .orElseThrow(() -> new RuntimeException("Target Employee not found"));
-
-        // 2. Fetch Requester from USER Table (FIXED)
+        // 2. Fetch Requester (Logged-in User)
         User requesterUser = userRepository.findByLoginId(loggedInLoginId)
-                .orElseThrow(() -> new RuntimeException("Logged-in user not found"));
+                .orElseThrow(() -> new RuntimeException("Security Error: Logged-in user [" + loggedInLoginId + "] not found in database."));
 
-        // Extract details from User entity safely
-        Integer reqRole = requesterUser.getRole().getRoleId();
+        // 3. Fetch Target Employee
+        Employee targetEmployee = employeeRepository.findById(targetEmpId)
+                .orElseThrow(() -> new RuntimeException("Data Error: Employee with ID " + targetEmpId + " does not exist."));
 
-        // Handle cases where User might not be linked to Employee or Company (e.g. Super Admin)
+        // 4. Extract IDs for Access Control (Safely handle Nulls)
+        Integer reqRoleId = (requesterUser.getRole() != null) ? requesterUser.getRole().getRoleId() : -1;
         Integer reqEmpId = (requesterUser.getEmployee() != null) ? requesterUser.getEmployee().getEmployeeId() : -1;
         Integer reqCompanyId = (requesterUser.getCompany() != null) ? requesterUser.getCompany().getCompanyId() : -1;
 
-        Integer targetId = targetEmployee.getEmployeeId();
+        Integer targetCompanyId = (targetEmployee.getCompany() != null) ? targetEmployee.getCompany().getCompanyId() : -2;
 
-        // ACCESS CONTROL LOGIC (Preserved)
-        if (reqEmpId.equals(targetId)) {
-            // Case A: Self-Download -> ALLOWED
-        } else if (reqRole == 1) {
-            // Case B: Super Admin -> ALLOWED (Global Access)
-        } else if (reqRole == 2) {
-            // Case C: HR Manager -> RESTRICTED (Same Company Only)
-            Integer targetCompanyId = targetEmployee.getCompany().getCompanyId();
+        // --- UPDATED ACCESS CONTROL LOGIC ---
+        boolean isAllowed = false;
 
-            if (!reqCompanyId.equals(targetCompanyId)) {
-                throw new RuntimeException("ACCESS DENIED: You cannot access employees of another company.");
+        // CASE 1: Admin (Role ID 1) -> Global Access (can download ANY slip)
+        if (Integer.valueOf(1).equals(reqRoleId)) {
+            isAllowed = true;
+        }
+        // CASE 2: HR Manager (Role ID 2) -> Allowed if it is their own slip OR if the employee is in their company
+        else if (Integer.valueOf(2).equals(reqRoleId)) {
+            if (targetEmpId.equals(reqEmpId) || reqCompanyId.equals(targetCompanyId)) {
+                isAllowed = true;
+            } else {
+                throw new RuntimeException("Access Denied: As HR, you can only download slips for employees in company ID " + reqCompanyId);
             }
-        } else {
-            // Case D: Regular Employee trying to download others -> DENIED
-            throw new RuntimeException("ACCESS DENIED: You do not have permission.");
+        }
+        // CASE 3: Regular Employee (Role ID 3 or others) -> Allowed ONLY if it's their own slip
+        else {
+            if (targetEmpId.equals(reqEmpId)) {
+                isAllowed = true;
+            } else {
+                throw new RuntimeException("Access Denied: You are not authorized to download this salary slip.");
+            }
         }
 
-        // Fetch Salary Data
+        if (!isAllowed) {
+            throw new RuntimeException("Access Denied: Unauthorized request.");
+        }
+
+        // 6. Fetch Salary and Bank Data
         EmployeeSalary salary = salaryRepository.findByEmployee_EmployeeIdAndStatus(targetEmpId, 1)
-                .orElseThrow(() -> new RuntimeException("Salary details not found for this employee"));
+                .orElseThrow(() -> new RuntimeException("Data Error: Active salary record not found for Emp ID " + targetEmpId));
 
         EmployeeBankDetails bank = bankRepository.findByEmployee_EmployeeId(targetEmpId)
-                .orElseThrow(()-> new RuntimeException("Employee Bank Details not found"));
+                .orElseThrow(() -> new RuntimeException("Data Error: Bank details missing for Emp ID " + targetEmpId));
+
 
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Document document = new Document(PageSize.A4, 20, 20, 20, 20); // Small margins

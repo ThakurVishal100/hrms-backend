@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "tb_attendance_details")
@@ -38,4 +39,30 @@ public class Attendance {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+
+    //  new fields
+
+    @Column(name = "bio_in_time")
+    private LocalTime bioInTime;
+
+    @Column(name = "bio_out_time")
+    private LocalTime bioOutTime;
+
+    // 2. Web Portal Source (Priority 2)
+    @Column(name = "web_in_time")
+    private LocalTime webInTime;
+
+    @Column(name = "web_out_time")
+    private LocalTime webOutTime;
+
+    // 3. WhatsApp Source (Priority 3)
+    @Column(name = "whatsapp_in_time")
+    private LocalTime whatsappInTime;
+
+    @Column(name = "whatsapp_out_time")
+    private LocalTime whatsappOutTime;
+
+    @Column(name = "status")
+    private String status;
 }

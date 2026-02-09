@@ -20,6 +20,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value="select * from tb_employee_record where company_id =:companyId", nativeQuery = true)
     List<Employee> findByCompanyId(Long companyId);
 
+    List<Employee> findByBiometricCode(Integer biometricCode);
+
     Optional<Employee> findByLoginId(String loginId);
 }
 

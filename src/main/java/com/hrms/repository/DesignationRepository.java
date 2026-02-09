@@ -4,6 +4,7 @@ import com.hrms.entity.Designation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DesignationRepository extends JpaRepository<Designation, Long> {
@@ -12,4 +13,6 @@ public interface DesignationRepository extends JpaRepository<Designation, Long> 
 
     // Optional: Fetch designations by Department if you want dependent dropdowns later
     List<Designation> findByDepartment_DeptId(Long deptId);
+
+    Optional<Designation> findByDesignationNameAndCompany_CompanyId(String designationName, Integer companyId);
 }

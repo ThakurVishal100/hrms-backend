@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
 
-    @Query(value = "SELECT * FROM tb_attendance_details WHERE emp_id = :employeeId AND attendance_date = :date", nativeQuery = true)
+    @Query(value = "SELECT * FROM tb_attendance_details WHERE emp_id = :employeeId AND attendance_date = :date ORDER BY att_id DESC LIMIT 1", nativeQuery = true)
     Optional<Attendance> findDailyAttendance(Integer employeeId, LocalDate date);
 
     @Query(value = "SELECT MONTH(attendance_date) as month, COUNT(*) as daysPresent, SUM(effective_wh) as totalHours " +
@@ -30,6 +30,8 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
             "ORDER BY attendance_date ASC", nativeQuery = true)
     List<Attendance> findDailyAttendanceByMonth(Integer empId, int month, int year);
 
+
+    Optional<Attendance> findByEmployee_EmployeeIdAndAttendanceDate(Integer empId, LocalDate date);
 }
 
 

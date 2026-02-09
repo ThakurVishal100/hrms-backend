@@ -44,3 +44,5 @@ public class EmployeeBankDetails {
     @Column(name = "esi_number")
     private String esiNumber;
 }
+
+

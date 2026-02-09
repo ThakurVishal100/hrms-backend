@@ -55,4 +55,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @Column(name = "biometric_code", unique = true)
+    private Integer biometricCode;
 }
