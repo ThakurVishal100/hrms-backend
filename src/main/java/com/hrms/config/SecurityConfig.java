@@ -51,7 +51,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // --- CORS CONFIGURATION BEAN ---
+    //  CORS CONFIGURATION BEAN
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -60,7 +60,9 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "http://128.185.149.166",
-                "http://128.185.149.166:80"
+                "http://128.185.149.166:80",
+                "http://hrms.jiffysoftwares.org",
+                "https://hrms.jiffysoftwares.org"
         ));
 
         // Allow standard HTTP methods

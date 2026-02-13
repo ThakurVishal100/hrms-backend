@@ -20,14 +20,23 @@ public class AuthService {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // NOTE: 'registerUser' method is removed because we are using
-    // Manual SQL for Super Admin and Auto-Creation for Employees.
+
 
     public AuthResponse loginUser(LoginRequest request) {
         // 1. Find User by Login ID
+
+//        Optional<T>
+//
+//        Ye ek wrapper object hai jo batata hai:
+//
+//        "Value ho bhi sakti hai, nahi bhi ho sakti."
+//
+//        Matlab null safe container.
+
         Optional<User> userOpt = userRepository.findByLoginId(request.getLoginId());
 
         if (userOpt.isPresent()) {
+//            System.out.println(userOpt.get());
             User user = userOpt.get();
 
             // 2. Check Password

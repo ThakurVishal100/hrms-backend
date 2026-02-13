@@ -23,5 +23,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findByBiometricCode(Integer biometricCode);
 
     Optional<Employee> findByLoginId(String loginId);
+
+    boolean existsByLoginId(String loginId);
+
+    boolean existsByBiometricCode(Integer biometricCode);
 }
 

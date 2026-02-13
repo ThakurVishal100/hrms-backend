@@ -71,29 +71,139 @@ public class EmployeeService {
 
 
 
+//    @Transactional
+//    public Employee saveEmployeeWithSalary(Map<String, Object> payload) {
+//
+//        Employee emp = new Employee();
+//        emp.setEmployeeName((String) payload.get("employeeName"));
+//
+//
+//        if (payload.get("joiningDate") != null) {
+//            emp.setJoiningDate(LocalDate.parse((String) payload.get("joiningDate")));
+//        }
+//
+//
+//        if (payload.get("status") != null) {
+//            emp.setStatus(Integer.parseInt(String.valueOf(payload.get("status"))));
+//        }
+//
+//
+//        Map<?,?> compMap = (Map<?,?>) payload.get("company");
+//        if(compMap != null) {
+//            Company c = new Company();
+//            c.setCompanyId(Integer.valueOf(String.valueOf(compMap.get("companyId"))));
+//            emp.setCompany(c);
+//        }
+//
+//        Map<?,?> deptMap = (Map<?,?>) payload.get("department");
+//        if(deptMap != null) {
+//            Department d = new Department();
+//            d.setDeptId(Long.valueOf(String.valueOf(deptMap.get("deptId"))));
+//            emp.setDepartment(d);
+//        }
+//
+//        Map<?,?> desgMap = (Map<?,?>) payload.get("designation");
+//        if(desgMap != null) {
+//            Designation d = new Designation();
+//            d.setDesignationId(Long.valueOf(String.valueOf(desgMap.get("designationId"))));
+//            emp.setDesignation(d);
+//        }
+//
+//
+//        Employee savedEmp = saveEmployee(emp);
+//
+//
+//        if (payload.containsKey("grossSalary") || payload.containsKey("salaryBreakup")) {
+//            EmployeeSalary salary = new EmployeeSalary();
+//            salary.setEmployee(savedEmp);
+//            salary.setCompany(savedEmp.getCompany());
+//            salary.setDepartment(savedEmp.getDepartment());
+//            salary.setDesignation(savedEmp.getDesignation());
+//            salary.setStatus(1);
+//            salary.setRegDate(LocalDateTime.now());
+//
+//
+//            if (payload.get("grossSalary") != null && !payload.get("grossSalary").toString().isEmpty()) {
+//                salary.setGrossSalaryFixed(new BigDecimal(String.valueOf(payload.get("grossSalary"))));
+//            }
+//
+//
+//            if (payload.get("grossSalaryVariable") != null && !payload.get("grossSalaryVariable").toString().isEmpty()) {
+//                salary.setGrossSalaryVariable(new BigDecimal(String.valueOf(payload.get("grossSalaryVariable"))));
+//            }
+//
+//            if (payload.get("salaryBreakup") != null) {
+//                Map<String, Object> breakupMap = objectMapper.convertValue(
+//                        payload.get("salaryBreakup"),
+//                        new TypeReference<Map<String, Object>>() {}
+//                );
+//                salary.setSalaryBreakup(breakupMap);
+//            }
+//
+//            employeeSalaryRepository.save(salary);
+//        }
+//
+//        return savedEmp;
+//    }
+
     @Transactional
     public Employee saveEmployeeWithSalary(Map<String, Object> payload) {
+        String empName = (String) payload.get("employeeName");
 
+        // 1. EXTRACT CREDENTIALS
+        String customLoginId = (String) payload.get("loginId");
+        String customPassword = (String) payload.get("password");
+
+        // 2. EXTRACT COMPANY ID
+        Integer companyId = null;
+        Map<?,?> compMap = (Map<?,?>) payload.get("company");
+        if(compMap != null) {
+            companyId = Integer.valueOf(String.valueOf(compMap.get("companyId")));
+        } else {
+            throw new RuntimeException("Company Information is missing");
+        }
+
+        // --- ROBUST UNIQUENESS CHECKS ---
+
+        // A. Login ID Check (MUST BE UNIQUE)
+        if (customLoginId != null && !customLoginId.trim().isEmpty()) {
+            if (employeeRepository.existsByLoginId(customLoginId)) {
+                throw new RuntimeException("Login ID '" + customLoginId + "' is already taken. Please choose a different one (e.g., " + customLoginId + "1).");
+            }
+        } else {
+            throw new RuntimeException("Login ID is required to create an employee.");
+        }
+
+        // B. Biometric Code Check (MUST BE UNIQUE for Attendance)
+        if (payload.get("biometricCode") != null) {
+            Integer bioCode = Integer.parseInt(String.valueOf(payload.get("biometricCode")));
+            // Only check if it's > 0 (some might use 0 as a placeholder)
+            if (bioCode > 0 && employeeRepository.existsByBiometricCode(bioCode)) {
+                throw new RuntimeException("Biometric Code '" + bioCode + "' is already assigned to another employee.");
+            }
+        }
+
+        // Note: We intentionally REMOVED the Name check.
+        // Two "Rahul Sharma"s can exist, provided they have different Login IDs and Biometric Codes.
+
+        // --- PREPARE EMPLOYEE OBJECT ---
         Employee emp = new Employee();
-        emp.setEmployeeName((String) payload.get("employeeName"));
-
+        emp.setEmployeeName(empName);
+        emp.setLoginId(customLoginId); // Set the custom Login ID
 
         if (payload.get("joiningDate") != null) {
             emp.setJoiningDate(LocalDate.parse((String) payload.get("joiningDate")));
         }
-
-
         if (payload.get("status") != null) {
             emp.setStatus(Integer.parseInt(String.valueOf(payload.get("status"))));
         }
-
-
-        Map<?,?> compMap = (Map<?,?>) payload.get("company");
-        if(compMap != null) {
-            Company c = new Company();
-            c.setCompanyId(Integer.valueOf(String.valueOf(compMap.get("companyId"))));
-            emp.setCompany(c);
+        if (payload.get("biometricCode") != null) {
+            emp.setBiometricCode(Integer.parseInt(String.valueOf(payload.get("biometricCode"))));
         }
+
+        Company c = new Company();
+        c.setCompanyId(companyId);
+        emp.setCompany(c);
 
         Map<?,?> deptMap = (Map<?,?>) payload.get("department");
         if(deptMap != null) {
@@ -109,10 +219,10 @@ public class EmployeeService {
             emp.setDesignation(d);
         }
 
+        // --- SAVE EMPLOYEE & USER (Pass Password) ---
+        Employee savedEmp = saveEmployee(emp, customPassword);
 
-        Employee savedEmp = saveEmployee(emp);
-
-
+        // --- SAVE SALARY (Existing Logic) ---
         if (payload.containsKey("grossSalary") || payload.containsKey("salaryBreakup")) {
             EmployeeSalary salary = new EmployeeSalary();
             salary.setEmployee(savedEmp);
@@ -122,16 +232,12 @@ public class EmployeeService {
             salary.setStatus(1);
             salary.setRegDate(LocalDateTime.now());
 
-
             if (payload.get("grossSalary") != null && !payload.get("grossSalary").toString().isEmpty()) {
                 salary.setGrossSalaryFixed(new BigDecimal(String.valueOf(payload.get("grossSalary"))));
             }
-
-
             if (payload.get("grossSalaryVariable") != null && !payload.get("grossSalaryVariable").toString().isEmpty()) {
                 salary.setGrossSalaryVariable(new BigDecimal(String.valueOf(payload.get("grossSalaryVariable"))));
             }
-
             if (payload.get("salaryBreakup") != null) {
                 Map<String, Object> breakupMap = objectMapper.convertValue(
                         payload.get("salaryBreakup"),
@@ -139,7 +245,6 @@ public class EmployeeService {
                 );
                 salary.setSalaryBreakup(breakupMap);
             }
-
             employeeSalaryRepository.save(salary);
         }
 
@@ -233,10 +338,17 @@ public class EmployeeService {
 
         return savedEmp;
     }
-    @Transactional
-    public Employee saveEmployee(Employee employee) {
 
-        //  VALIDATION: Ensure no field is empty
+
+//    @Transactional
+//    public Employee saveEmployee(Employee employee) {
+//        return saveEmployeeDetails(employee, null);
+//    }
+
+    @Transactional
+    public Employee saveEmployee(Employee employee, String password) {
+
+        //  VALIDATION
         if (employee.getEmployeeName() == null || employee.getEmployeeName().trim().isEmpty()) {
             throw new RuntimeException("Employee Name is required.");
         }
@@ -252,51 +364,40 @@ public class EmployeeService {
         if (employee.getJoiningDate() == null) {
             throw new RuntimeException("Joining Date is required.");
         }
+        if (employee.getLoginId() == null || employee.getLoginId().trim().isEmpty()) {
+            throw new RuntimeException("Login ID is required for user creation.");
+        }
+
+        // DEFAULTS
         if (employee.getStatusDescription() == null) employee.setStatusDescription("Active");
         if (employee.getRegDate() == null) employee.setRegDate(LocalDateTime.now());
-
-        //  AUTO-FILL DEFAULTS
-        if (employee.getStatus() == null) {
-            employee.setStatus(1);
-        }
-        if (employee.getStatusDescription() == null || employee.getStatusDescription().isEmpty()) {
-            employee.setStatusDescription("Active");
-        }
-        // Set Registration Date if not present (only for new records)
-        if (employee.getEmployeeId() == null) {
-            employee.setRegDate(LocalDateTime.now());
-        }
-
+        if (employee.getStatus() == null) employee.setStatus(1);
 
         Employee savedEmployee = employeeRepository.save(employee);
 
-        //  AUTO-CREATE USER LOGIN
-        Integer userCount = userRepository.countByEmployeeId(savedEmployee.getEmployeeId());
-
-        if (userCount == null || userCount == 0) {
-            createUserForEmployee(savedEmployee);
-        }
+        // CREATE USER LOGIN
+        // We now force update/create if they don't exist, using provided credentials
+        createUserForEmployee(savedEmployee, password);
 
         return savedEmployee;
     }
 
-    private void createUserForEmployee(Employee employee) {
+    private void createUserForEmployee(Employee employee, String password) {
+        // Check if user already exists
+        Integer userCount = userRepository.countByEmployeeId(employee.getEmployeeId());
+
+        if (userCount != null && userCount > 0) {
+            return; // User already exists
+        }
+
         User newUser = new User();
-
-        // Generate Login ID: FirstName + EmployeeID (e.g., "Rahul52")
-        String cleanName = employee.getEmployeeName().split(" ")[0].replaceAll("[^a-zA-Z0-9]", "");
-        String generatedLoginId = cleanName + employee.getEmployeeId();
-
-
-        String defaultPassword = "welcome123";
-
-        newUser.setLoginId(generatedLoginId);
-        newUser.setPassword(defaultPassword);
-
+        newUser.setLoginId(employee.getLoginId()); // Use the ID from Employee Entity
+        newUser.setPassword(password != null && !password.isEmpty() ? password : "welcome123"); // Use provided password
         newUser.setEmployee(employee);
         newUser.setCompany(employee.getCompany());
 
         // Assign Role: Default to "Employee" (ID 3)
+        // Adjust ID if your DB uses different IDs for Role
         Role employeeRole = roleRepository.findById(3L).orElse(null);
         newUser.setRole(employeeRole);
 
@@ -304,8 +405,7 @@ public class EmployeeService {
         newUser.setRegDate(LocalDateTime.now());
 
         userRepository.save(newUser);
-
-        System.out.println(">>> User Created: " + generatedLoginId);
+        System.out.println(">>> User Created: " + employee.getLoginId());
     }
 
     public Employee getEmployeeById(Integer id) {

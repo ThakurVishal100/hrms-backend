@@ -21,7 +21,7 @@ public class EmployeeController {
     @GetMapping
     public List<EmployeeDTO> listEmployees(
             @RequestParam Long roleId,
-            @RequestParam(required = false) Long companyId, //  loggedin users company
+            @RequestParam(required = false) Long companyId,
             @RequestParam(required = false) Long filterCompanyId) {
         return employeeService.getEmployees(roleId, companyId,filterCompanyId);
     }
@@ -99,9 +99,10 @@ public class EmployeeController {
         if (emp != null) {
             emp.setStatus(0);
             emp.setStatusDescription("Deactivated");
-            employeeService.saveEmployee(emp);
+            employeeService.saveEmployee(emp,null);
             return ResponseEntity.ok("Employee deactivated successfully");
         }
         return ResponseEntity.notFound().build();
     }
 }
+
